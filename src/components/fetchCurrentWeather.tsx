@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 
-const API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY';
+const API_KEY = '';
 
 // Function to fetch current weather data
 const fetchCurrentWeather = async (cityName: string) => {
