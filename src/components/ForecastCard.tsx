@@ -2,11 +2,15 @@ import React from 'react';
 import { Forecast } from './Types';
 
 interface ForecastCardProps {
-  forecast: Forecast;
+  forecast: Forecast[];
 }
 
 const ForecastCard: React.FC<ForecastCardProps> = ({ forecast }) => {
-  return (
+  if (forecast.length === 0) {
+    return (
+  
+
+  
     <div className="forecast-card">
       <h3>{forecast.date}</h3>
       <p>Temperature: {forecast.temperature}°C</p>
@@ -16,5 +20,5 @@ const ForecastCard: React.FC<ForecastCardProps> = ({ forecast }) => {
     </div>
   );
 };
-
+}
 export default ForecastCard;

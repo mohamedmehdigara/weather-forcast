@@ -1,6 +1,6 @@
 // AppStateContext.tsx
 import React, { createContext, useContext, useState } from 'react';
-import { Weather, City, Forecast } from './Types';
+import { Weather, City, Forecast } from './types';
 
 interface AppState {
   weather: Weather | null;
@@ -14,7 +14,7 @@ const initialState: AppState = {
   forecast: [],
 };
 
-const AppStateContext = createContext<AppState | undefined>(undefined);
+const AppStateContext = createContext<AppState | undefined>(initialState);
 
 export const useAppState = () => {
   const context = useContext(AppStateContext);
@@ -24,13 +24,12 @@ export const useAppState = () => {
   return context;
 };
 
-export const AppStateProvider: React.FC = ({  }) => {
+export const AppStateProvider: React.FC = ({ children }) => {
   const [state, setState] = useState(initialState);
 
   return (
     <AppStateContext.Provider value={state}>
-      {}
+      {children}
     </AppStateContext.Provider>
   );
 };
- export default {AppStateContext};

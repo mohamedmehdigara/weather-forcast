@@ -1,11 +1,15 @@
 import React from 'react';
-import { Weather } from './Types'; // Assuming Weather type is defined in types.ts or similar
+import { Weather } from './Types';
 
 interface WeatherCardProps {
-  weather: Weather;
+  weather: Weather | null; // Allow null as weather data
 }
 
 const WeatherCard: React.FC<WeatherCardProps> = ({ weather }) => {
+  if (!weather) {
+    return <div>No weather data available</div>;
+  }
+
   return (
     <div className="weather-card">
       <h3>{weather.city}</h3>
