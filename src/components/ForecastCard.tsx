@@ -7,18 +7,23 @@ interface ForecastCardProps {
 
 const ForecastCard: React.FC<ForecastCardProps> = ({ forecast }) => {
   if (forecast.length === 0) {
-    return (
-  
+    return null; // Return null when there's no forecast data
+  }
 
-  
+  return (
     <div className="forecast-card">
-      <h3>{forecast.date}</h3>
-      <p>Temperature: {forecast.temperature}°C</p>
-      <p>Description: {forecast.description}</p>
-      <p>Precipitation: {forecast.precipitation}%</p>
-      {/* Add more forecast details as needed */}
+      {forecast.map((item, index) => (
+        <div key={index} className="forecast-item">
+          <h3>{item.date}</h3>
+          <p>Temperature: {item.temperature}°C</p>
+          <p>Description: {item.description}</p>
+          <p>Precipitation: {item.precipitation}%</p>
+          {/* Add more forecast details as needed */}
+        </div>
+      ))}
     </div>
   );
 };
-}
+
 export default ForecastCard;
+
